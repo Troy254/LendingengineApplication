@@ -29,7 +29,6 @@ public class MessagingConfig {
     return new TopicExchange(TOPIC);
   }
 
-
   @Bean
   public Binding binding(Queue queue, TopicExchange topicExchange) {
     return BindingBuilder.bind(queue).to(topicExchange).with("user.#");
@@ -42,7 +41,7 @@ public class MessagingConfig {
     container.setConnectionFactory(connectionFactory);
     container.setQueueNames(QUEUE_NAME);
     container.setMessageListener(messageListenerAdapter);
-
     return container;
   }
+
 }
