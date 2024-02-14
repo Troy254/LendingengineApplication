@@ -34,14 +34,19 @@ public class MessagingConfig {
     return BindingBuilder.bind(queue).to(topicExchange).with("user.#");
   }
 
+  //add Listeners
   @Bean
   public SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
-      MessageListenerAdapter messageListenerAdapter) {
+      MessageListenerAdapter mesageListenerAdapter) {
     SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
     container.setConnectionFactory(connectionFactory);
     container.setQueueNames(QUEUE_NAME);
-    container.setMessageListener(messageListenerAdapter);
+    container.setMessageListener(mesageListenerAdapter);
     return container;
   }
+@Bean
+  public MessageListenerAdapter userRegisteredEventListener(){
+    return new MessageListenerAdapter();
+}
 
 }
