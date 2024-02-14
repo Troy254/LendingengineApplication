@@ -44,9 +44,10 @@ public class MessagingConfig {
     container.setMessageListener(mesageListenerAdapter);
     return container;
   }
-@Bean
+
+  @Bean
   public MessageListenerAdapter userRegisteredEventListener(){
     return new MessageListenerAdapter();
-}
+  }
 
 }
