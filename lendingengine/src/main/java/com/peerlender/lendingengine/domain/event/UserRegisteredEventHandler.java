@@ -20,9 +20,10 @@ public class UserRegisteredEventHandler {
   public UserRegisteredEventHandler(UserRepository userRepository){
     this.userRepository = userRepository;
   }
+
   public void handleUserRegistration(String userDetails){
-    AppUsers appUsers = GSON.fromJson(userDetails,AppUsers.class);
-    LOGGER.info("user {} registered",appUsers.getUsername());
+    AppUsers appUsers = GSON.fromJson(userDetails, AppUsers.class);
+    LOGGER.info("user {} registered", appUsers.getUsername());
     userRepository.save(appUsers);
   }
 }

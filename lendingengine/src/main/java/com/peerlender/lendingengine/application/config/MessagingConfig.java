@@ -1,6 +1,5 @@
 package com.peerlender.lendingengine.application.config;
 
-
 import com.peerlender.lendingengine.domain.event.UserRegisteredEventHandler;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -16,17 +15,15 @@ import org.springframework.context.annotation.Configuration;
 public class MessagingConfig {
 
   private static final String TOPIC = "userRegisteredTopic";
-  private static final String QUEUE_NAME = "user.registered";
+  private static final String QUEUE_NAME = "user.registered.lending";
 
   @Bean
   public Queue userRegisteredQueue() {
-
     return new Queue(QUEUE_NAME, false);
   }
 
   @Bean
   public TopicExchange userRegisteredTopic() {
-
     return new TopicExchange(TOPIC);
   }
 
@@ -38,11 +35,11 @@ public class MessagingConfig {
   //add Listeners
   @Bean
   public SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
-      MessageListenerAdapter mesageListenerAdapter) {
+      MessageListenerAdapter messageListenerAdapter) {
     SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
     container.setConnectionFactory(connectionFactory);
     container.setQueueNames(QUEUE_NAME);
-    container.setMessageListener(mesageListenerAdapter);
+    container.setMessageListener(messageListenerAdapter);
     return container;
   }
 
