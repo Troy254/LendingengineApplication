@@ -23,4 +23,11 @@ public class Money {
     }
     return new Money(amount + money.getAmount(),currency);
     }
+
+  public Money minus(Money money){
+    if(currency != money.getCurrency() || amount < money.getAmount()){
+      throw new IllegalArgumentException();
+    }
+    return new Money(amount - money.getAmount(),currency);
+  }
   }
