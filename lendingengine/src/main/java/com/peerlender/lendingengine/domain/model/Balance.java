@@ -3,11 +3,15 @@ package com.peerlender.lendingengine.domain.model;
 import jakarta.persistence.Entity;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Entity
 public class Balance {
 
-  private Map<Currency,Money> moneyMap = new HashMap<>();
+private Map<Currency,Money> moneyMap = new HashMap<>();
 
   public void topUp(Money money) {
     if(moneyMap.get(money.getCurrency()) == null) {
