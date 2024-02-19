@@ -20,7 +20,10 @@ public class Balance {
     public void withdraw(Money money) {
       Money moneyInBalance = moneyMap.get(money.getCurrency());
      if(moneyInBalance == null) {
-     throw new IllegalArgumentException();
+     throw new IllegalStateException();
+     }
+     else {
+       moneyMap.put(money.getCurrency(),moneyMap.get(money.getCurrency()).minus(money));
      }
   }
 }
