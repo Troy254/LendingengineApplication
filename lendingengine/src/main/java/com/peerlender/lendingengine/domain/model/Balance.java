@@ -3,10 +3,6 @@ package com.peerlender.lendingengine.domain.model;
 import jakarta.persistence.Entity;
 import java.util.HashMap;
 import java.util.Map;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 
 @Entity
 public class Balance {
