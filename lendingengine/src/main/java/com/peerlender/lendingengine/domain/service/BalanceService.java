@@ -35,5 +35,4 @@ public class BalanceService {
     return userRepository.findById(authToken)
     .orElseThrow(()-> new UserNotFoundException(authToken));
   }
-
 }
