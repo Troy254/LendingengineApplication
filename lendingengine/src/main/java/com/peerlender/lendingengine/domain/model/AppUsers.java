@@ -1,5 +1,6 @@
 package com.peerlender.lendingengine.domain.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
@@ -20,7 +21,7 @@ public class AppUsers {
   private String lastName;
   private int age;
   private String occupation;
-  @OneToOne
+  @OneToOne(cascade = CascadeType.ALL)
   private Balance balance;
 
 
