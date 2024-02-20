@@ -7,23 +7,22 @@ import java.util.Map;
 @Entity
 public class Balance {
 
-private Map<Currency,Money> moneyMap = new HashMap<>();
+  private Map<Currency, Money> moneyMap = new HashMap<>();
 
   public void topUp(Money money) {
     if(moneyMap.get(money.getCurrency()) == null) {
-      moneyMap.put(money.getCurrency(),money);
+      moneyMap.put(money.getCurrency(), money);
     } else {
-      moneyMap.put(money.getCurrency(),moneyMap.get(money.getCurrency()).add(money));
+      moneyMap.put(money.getCurrency(), moneyMap.get(money.getCurrency()).add(money));
     }
   }
 
-    public void withdraw(Money money) {
-      Money moneyInBalance = moneyMap.get(money.getCurrency());
-     if(moneyInBalance == null) {
-     throw new IllegalStateException();
-     }
-     else {
-       moneyMap.put(money.getCurrency(),moneyMap.get(money.getCurrency()).minus(money));
-     }
+  public void withdraw(Money money) {
+    Money moneyInBalance = moneyMap.get(money.getCurrency());
+    if(moneyInBalance == null) {
+      throw new IllegalStateException();
+    } else {
+      moneyMap.put(money.getCurrency(), moneyMap.get(money.getCurrency()).minus(money));
+    }
   }
 }
