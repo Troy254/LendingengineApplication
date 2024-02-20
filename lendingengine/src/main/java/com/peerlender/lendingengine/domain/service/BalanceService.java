@@ -16,10 +16,24 @@ public class BalanceService {
   public BalanceService(UserRepository userRepository) {
     this.userRepository = userRepository;
   }
-@Transactional
-  public void topUpBalance(Money money, String authToken) {
-    AppUsers appUsers = userRepository.findById(authToken)
-        .orElseThrow(()-> new UserNotFoundException(authToken));
+
+  @Transactional
+  public void topUpBalance(Money money, String authToken){
+    AppUsers appUsers = findUser(authToken);
     appUsers.topUp(money);
   }
+
+
+  @Transactional
+  public void withdrawFromBalance(Money money, String authToken){
+    AppUsers appUsers = findUser(authToken);
+    appUsers.withdraw(money);
+  }
+
+
+  private AppUsers findUser(String authToken){
+    return userRepository.findById(authToken)
+    .orElseThrow(()-> new UserNotFoundException(authToken));
+  }
+
 }
