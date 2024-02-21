@@ -28,9 +28,20 @@ public class LoanService {
 
   public void acceptLoan(String applicationId, String lenderUsername) {
     System.out.println("passed through service");
-    AppUsers lender = userRepository.findById(lenderUsername).orElseThrow(() -> new UserNotFoundException(lenderUsername));
-    LoanApplication loanApplication = loanApplicationRepository.findById(Long.valueOf(applicationId)).orElseThrow(() -> new UserNotFoundException(applicationId));
+    AppUsers lender = findAppUsers(lenderUsername);
+    LoanApplication loanApplication = findLoanApplication(applicationId);
     loanRepository.save(new Loan(lender, loanApplication));
+  }
+
+  private LoanApplication findLoanApplication(String applicationId) {
+    return loanApplicationRepository.findById(
+        Long.valueOf(applicationId)).orElseThrow(
+        () -> new UserNotFoundException(applicationId));
+  }
+
+  private AppUsers findAppUsers(String lenderUsername) {
+    return userRepository.findById(lenderUsername).orElseThrow(
+        () -> new UserNotFoundException(lenderUsername));
   }
 
   public List<Loan> getLoans() {
