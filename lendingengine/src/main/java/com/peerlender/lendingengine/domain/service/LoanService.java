@@ -13,28 +13,31 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class LoanService {
-    private LoanApplicationRepository loanApplicationRepository;
-    private UserRepository userRepository;
-    private LoanRepository loanRepository;
 
-    @Autowired
-    public LoanService(LoanApplicationRepository loanApplicationRepository,
-        UserRepository userRepository, LoanRepository loanRepository) {
-      this.loanApplicationRepository = loanApplicationRepository;
-      this.userRepository = userRepository;
-      this.loanRepository = loanRepository;
-    }
+  private LoanApplicationRepository loanApplicationRepository;
+  private UserRepository userRepository;
+  private LoanRepository loanRepository;
 
-    public void acceptLoan(String applicationId, String lenderUsername){
-      System.out.println("passed through service");
-     AppUsers lender = userRepository.findById(lenderUsername).orElseThrow(
-          ()-> new UserNotFoundException(lenderUsername));
-          LoanApplication loanApplication = loanApplicationRepository.findById(
-          Long.valueOf(applicationId)).orElseThrow(
-          ()-> new UserNotFoundException(applicationId));
-      loanRepository.save(new Loan(lender,loanApplication));
-    }
-    public List<Loan> getLoans(){ return loanRepository.findAll();
-    }
+  @Autowired
+  public LoanService(LoanApplicationRepository loanApplicationRepository,
+      UserRepository userRepository, LoanRepository loanRepository) {
+    this.loanApplicationRepository = loanApplicationRepository;
+    this.userRepository = userRepository;
+    this.loanRepository = loanRepository;
   }
+
+  public void acceptLoan(String applicationId, String lenderUsername) {
+    System.out.println("passed through service");
+    AppUsers lender = userRepository.findById(lenderUsername).orElseThrow(
+        () -> new UserNotFoundException(lenderUsername));
+    LoanApplication loanApplication = loanApplicationRepository.findById(
+        Long.valueOf(applicationId)).orElseThrow(
+        () -> new UserNotFoundException(applicationId));
+    loanRepository.save(new Loan(lender, loanApplication));
+  }
+
+  public List<Loan> getLoans() {
+    return loanRepository.findAll();
+  }
+}
 
