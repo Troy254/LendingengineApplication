@@ -30,6 +30,7 @@ public class LoanService {
     System.out.println("passed through service");
     AppUsers lender = findAppUsers(lenderUsername);
     LoanApplication loanApplication = findLoanApplication(applicationId);
+    AppUsers borrower = loanApplication.getBorrower();
     loanRepository.save(new Loan(lender, loanApplication));
   }
 
