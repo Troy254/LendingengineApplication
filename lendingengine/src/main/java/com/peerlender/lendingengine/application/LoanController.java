@@ -69,14 +69,13 @@ public class LoanController {
     return userRepository.findAll();
   }
 
-
-  //Accept A Loan
-  @PostMapping(value = "/loan/accept/{loanApplicationId}")
+//Accept A Loan
+  @PostMapping(value = "/loan/accept/{loanApplication}")
   public void acceptLoan(@PathVariable String loanApplicationId,
       HttpServletRequest request) {
-    AppUsers lender = tokenValidationService.validateTokenAndGetUser(
-        request.getHeader(HttpHeaders.AUTHORIZATION));
-    loanService.acceptLoan(loanApplicationId, lender.getUsername());
+    AppUsers lender =tokenValidationService.validateTokenAndGetUser(
+        request.getHeader(HttpHeaders.AUTHORIZATION);
+        loanService.acceptLoan(loanApplicationId, lender.getUsername());
   }
 
   //Getting All The Loans
