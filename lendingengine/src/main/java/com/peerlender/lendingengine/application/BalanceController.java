@@ -21,10 +21,9 @@ public class BalanceController {
   }
 
   @PostMapping("/topup")
-  public void topUp(@RequestBody Money money, @RequestHeader String authorization) {
+  public void topup(@RequestBody Money money, @RequestHeader String authorization) {
     balanceService.topUpBalance(money, authorization);
   }
-
 
   @PostMapping("/withdraw")
   public void withdraw(@RequestBody Money money, @RequestHeader String authorization) {
