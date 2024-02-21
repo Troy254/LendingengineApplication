@@ -11,9 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class  LoanApplication {
+public class LoanApplication {
+
   @Id
   private int amount;
+
   @ManyToOne
   private AppUsers borrower;
   private int repaymentTermInDays;
