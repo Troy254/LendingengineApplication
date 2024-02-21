@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LoanController {
+
   private LoanApplicationRepository loanApplicationRepository;
   private UserRepository userRepository;
 
@@ -46,7 +47,8 @@ public class LoanController {
   //Request a Loan
   @PostMapping(value = "/loan/request")
   public void requestLoan(@RequestBody LoanRequest loanRequest, HttpServletRequest request) {
-   AppUsers borrower = tokenValidationService.validateTokenAndGetUser(request.getHeader(HttpHeaders.AUTHORIZATION));
+    AppUsers borrower = tokenValidationService.validateTokenAndGetUser(
+        request.getHeader(HttpHeaders.AUTHORIZATION));
     LoanApplication loanApplication = loanApplicationAdapter.transform(loanRequest, borrower);
     loanApplicationRepository.save(loanApplication);
   }
@@ -72,14 +74,16 @@ public class LoanController {
   @PostMapping(value = "/loan/accept/{loanApplicationId}")
   public void acceptLoan(@PathVariable String loanApplicationId,
       HttpServletRequest request) {
-    AppUsers lender = tokenValidationService.validateTokenAndGetUser(request.getHeader(HttpHeaders.AUTHORIZATION));
+    AppUsers lender = tokenValidationService.validateTokenAndGetUser(
+        request.getHeader(HttpHeaders.AUTHORIZATION));
     loanService.acceptLoan(loanApplicationId, lender.getUsername());
   }
 
   //Getting All The Loans
   @GetMapping(value = "/loans")
-  public List<Loan> getLoans(HttpServletRequest request){
+  public List<Loan> getLoans(HttpServletRequest request) {
     tokenValidationService.validateTokenAndGetUser(request.getHeader(HttpHeaders.AUTHORIZATION));
     return loanService.getLoans();
+
   }
 }
