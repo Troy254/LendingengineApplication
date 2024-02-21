@@ -28,11 +28,8 @@ public class LoanService {
 
   public void acceptLoan(String applicationId, String lenderUsername) {
     System.out.println("passed through service");
-    AppUsers lender = userRepository.findById(lenderUsername).orElseThrow(
-        () -> new UserNotFoundException(lenderUsername));
-    LoanApplication loanApplication = loanApplicationRepository.findById(
-        Long.valueOf(applicationId)).orElseThrow(
-        () -> new UserNotFoundException(applicationId));
+    AppUsers lender = userRepository.findById(lenderUsername).orElseThrow(() -> new UserNotFoundException(lenderUsername));
+    LoanApplication loanApplication = loanApplicationRepository.findById(Long.valueOf(applicationId)).orElseThrow(() -> new UserNotFoundException(applicationId));
     loanRepository.save(new Loan(lender, loanApplication));
   }
 
