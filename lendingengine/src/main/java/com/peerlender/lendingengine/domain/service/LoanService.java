@@ -46,6 +46,7 @@ public class LoanService {
   }
 
   public List<Loan> getLoans() {
+
     return loanRepository.findAll();
   }
 }

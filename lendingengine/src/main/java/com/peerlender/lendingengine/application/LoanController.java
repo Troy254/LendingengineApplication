@@ -78,7 +78,6 @@ public class LoanController {
     loanService.acceptLoan(loanApplicationId, lender.getUsername());
   }
 
-
   //Getting All The Loans
   @GetMapping(value = "/loans")
   public List<Loan> getLoans(HttpServletRequest request) {

@@ -22,11 +22,11 @@ public class Balance {
   @Id
   @GeneratedValue
   private long id;
-
   @ElementCollection
   @MapKeyClass(Currency.class)
   @OneToMany(targetEntity = Money.class,cascade = CascadeType.ALL)
   private Map<Currency,Money> moneyMap = new HashMap<>();
+
   public void topUp(Money money) {
     if(moneyMap.get(money.getCurrency()) == null) {
       moneyMap.put(money.getCurrency(), money);
