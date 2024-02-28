@@ -23,6 +23,6 @@ public class LendingengineApplication implements CommandLineRunner{
 
 		userRepository.save(new AppUsers("John", "John", "Omollo", 27, "Credit",new Balance()));
 		userRepository.save(new AppUsers("Mark", "Mark", "Yashmak", 29, "Software Engineer",new Balance()));
-		userRepository.save(new AppUsers("James","James", "Putin", 35,"SalesMan",new Balance()));
+		userRepository.save(new AppUsers("James","James", "Putin", 35,"Officer",new Balance()));
 	}
 }
