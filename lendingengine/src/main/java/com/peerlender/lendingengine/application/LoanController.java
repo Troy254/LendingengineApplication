@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -61,8 +62,13 @@ public class LoanController {
     return loanApplicationRepository.findAll();
   }
 
+  @GetMapping(value = "/loan/borrowed")
+  public List<Loan> findBorrowedLoans(@RequestHeader String authorization) {
+  AppUsers borrower = tokenValidationService.validateTokenAndGetUser(authorization);
+  return loanService.findAllBorrowedLoans(borrower);
+  }
 
-
+  @GetMapping(value = "/loan/lent")
 
   //Accept A Loan
   @PostMapping(value = "/loan/accept/{loanApplicationId}")

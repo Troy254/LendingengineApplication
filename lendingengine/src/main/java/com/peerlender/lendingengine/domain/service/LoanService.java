@@ -40,6 +40,14 @@ public class LoanService {
     loanRepository.save(new Loan(lender, loanApplication));
   }
 
+  public List<Loan>  findAllBorrowedLoans(final AppUsers borrower) {
+    return loanRepository.findAllByBorrower(borrower);
+  }
+
+  public List<Loan> findAllLentLoans(final AppUsers lender) {
+    return loanRepository.findAllByLender(lender);
+  }
+
   private LoanApplication findLoanApplication(String applicationId) {
     return loanApplicationRepository.findById(
         Long.valueOf(applicationId)).orElseThrow(
