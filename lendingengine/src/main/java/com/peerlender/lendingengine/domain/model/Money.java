@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class Money {
+
   @Id
   @GeneratedValue
   private long id;
@@ -24,11 +25,11 @@ public class Money {
   }
 
   public Money add(Money money) {
-    if (currency != money.getCurrency()) {
-      throw new IllegalArgumentException();
-    }
-    return new Money(amount + money.getAmount(), currency);
+    if(currency!= money.getCurrency()){
+    throw new IllegalArgumentException();
   }
+  return new Money(amount + money.getAmount(),currency);
+}
 
   public Money minus(Money money) {
     if (currency != money.getCurrency() || amount < money.getAmount()) {
@@ -36,4 +37,5 @@ public class Money {
     }
     return new Money(amount - money.getAmount(), currency);
   }
+
 }

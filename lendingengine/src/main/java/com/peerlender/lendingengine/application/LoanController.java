@@ -63,7 +63,7 @@ public class LoanController {
   }
 
   @GetMapping(value = "/loan/lent")
-  public List<Loan> findLentLoans(@RequestHeader String authorization){
+  public List<Loan> findLentLoans(@RequestHeader String authorization) {
     AppUsers lender = tokenValidationService.validateTokenAndGetUser(authorization);
     return loanService.findAllLentLoans(lender);
   }
