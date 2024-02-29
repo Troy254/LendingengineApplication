@@ -88,6 +88,5 @@ public class LoanController {
   public List<Loan> getLoans(HttpServletRequest request) {
     tokenValidationService.validateTokenAndGetUser(request.getHeader(HttpHeaders.AUTHORIZATION));
     return loanService.getLoans();
-
   }
 }
