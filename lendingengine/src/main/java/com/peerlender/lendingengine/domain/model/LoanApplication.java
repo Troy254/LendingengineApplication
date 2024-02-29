@@ -20,5 +20,4 @@ public class LoanApplication {
   private AppUsers borrower;
   private int repaymentTermInDays;
   private double interestRate;
-
 }
