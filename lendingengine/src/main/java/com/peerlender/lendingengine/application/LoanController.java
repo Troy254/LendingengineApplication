@@ -62,12 +62,7 @@ public class LoanController {
   }
 
 
-  //find all Users
-  @GetMapping(value = "/users")
-  public List<AppUsers> findUsers(HttpServletRequest request) {
-    tokenValidationService.validateTokenAndGetUser(request.getHeader(HttpHeaders.AUTHORIZATION));
-    return userRepository.findAll();
-  }
+
 
   //Accept A Loan
   @PostMapping(value = "/loan/accept/{loanApplicationId}")
