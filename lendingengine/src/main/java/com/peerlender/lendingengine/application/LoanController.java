@@ -6,7 +6,6 @@ import com.peerlender.lendingengine.domain.model.AppUsers;
 import com.peerlender.lendingengine.domain.model.Loan;
 import com.peerlender.lendingengine.domain.model.LoanApplication;
 import com.peerlender.lendingengine.domain.repository.LoanApplicationRepository;
-import com.peerlender.lendingengine.domain.repository.UserRepository;
 import com.peerlender.lendingengine.domain.service.LoanApplicationAdapter;
 import com.peerlender.lendingengine.domain.service.LoanService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoanController {
 
   private LoanApplicationRepository loanApplicationRepository;
-  private UserRepository userRepository;
 
   private LoanApplicationAdapter loanApplicationAdapter;
 
@@ -34,11 +32,9 @@ public class LoanController {
 
   @Autowired
   public LoanController(LoanApplicationRepository loanApplicationRepository,
-      UserRepository userRepository,
       LoanApplicationAdapter loanApplicationAdapter, LoanService loanService,
       TokenValidationService tokenValidationService) {
     this.loanApplicationRepository = loanApplicationRepository;
-    this.userRepository = userRepository;
     this.loanApplicationAdapter = loanApplicationAdapter;
     this.loanService = loanService;
     this.tokenValidationService = tokenValidationService;
