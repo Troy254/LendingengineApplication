@@ -43,7 +43,6 @@ public class MessagingConfig {
     return container;
   }
 
-
   @Bean
   public MessageListenerAdapter userRegisteredEventListener(
       UserRegisteredEventHandler userRegisteredEventHandler) {
