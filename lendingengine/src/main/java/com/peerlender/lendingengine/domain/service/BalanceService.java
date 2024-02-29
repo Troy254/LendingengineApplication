@@ -14,6 +14,7 @@ public class BalanceService {
 
   @Autowired
   public BalanceService(UserRepository userRepository) {
+
     this.userRepository = userRepository;
   }
 
@@ -23,13 +24,11 @@ public class BalanceService {
     appUsers.topUp(money);
   }
 
-
   @Transactional
   public void withdrawFromBalance(Money money, String authToken){
     AppUsers appUsers = findUser(authToken);
     appUsers.withdraw(money);
   }
-
 
   private AppUsers findUser(String authToken){
     return userRepository.findById(authToken)
