@@ -44,7 +44,6 @@ public class LoanController {
     this.tokenValidationService = tokenValidationService;
   }
 
-
   //Request a Loan
   @PostMapping(value = "/loan/request")
   public void requestLoan(@RequestBody LoanRequest loanRequest, HttpServletRequest request) {
@@ -53,7 +52,6 @@ public class LoanController {
     LoanApplication loanApplication = loanApplicationAdapter.transform(loanRequest, borrower);
     loanApplicationRepository.save(loanApplication);
   }
-
 
   //find all loan requests
   @GetMapping(value = "/loan/requests")
