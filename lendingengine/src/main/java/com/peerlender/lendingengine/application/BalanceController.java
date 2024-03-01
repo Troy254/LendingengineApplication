@@ -17,6 +17,7 @@ public class BalanceController {
 
   @Autowired
   public BalanceController(BalanceService balanceService) {
+
     this.balanceService = balanceService;
   }
 
