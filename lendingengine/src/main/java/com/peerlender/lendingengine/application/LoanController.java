@@ -82,7 +82,6 @@ public class LoanController {
   public void repayLoan(@RequestBody LoanRepaymentRequest request,
       @RequestHeader String authorization){
    AppUsers borrower = tokenValidationService.validateTokenAndGetUser(authorization);
-
   }
 
   //Getting All The Loans
