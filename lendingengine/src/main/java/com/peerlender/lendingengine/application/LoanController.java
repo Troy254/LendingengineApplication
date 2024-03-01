@@ -77,6 +77,11 @@ public class LoanController {
     loanService.acceptLoan(loanApplicationId, lender.getUsername());
   }
 
+  @PostMapping(value = "/loan/repay")
+  public void repayLoan(){
+
+  }
+
   //Getting All The Loans
   @GetMapping(value = "/loans")
   public List<Loan> getLoans(HttpServletRequest request) {
