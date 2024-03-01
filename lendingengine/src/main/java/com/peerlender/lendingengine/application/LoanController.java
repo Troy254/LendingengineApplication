@@ -1,5 +1,6 @@
 package com.peerlender.lendingengine.application;
 
+import com.peerlender.lendingengine.application.model.LoanRepaymentRequest;
 import com.peerlender.lendingengine.application.model.LoanRequest;
 import com.peerlender.lendingengine.application.service.TokenValidationService;
 import com.peerlender.lendingengine.domain.model.AppUsers;
@@ -78,7 +79,9 @@ public class LoanController {
   }
 
   @PostMapping(value = "/loan/repay")
-  public void repayLoan(){
+  public void repayLoan(@RequestBody LoanRepaymentRequest request,
+      @RequestHeader String authorization){
+   AppUsers borrower = tokenValidationService.validateTokenAndGetUser(authorization);
 
   }
 
