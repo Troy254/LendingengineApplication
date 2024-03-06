@@ -32,6 +32,6 @@ public class BalanceService {
 
   private AppUsers findUser(String authToken){
     return userRepository.findById(authToken)
-    .orElseThrow(()-> new UserNotFoundException(authToken));
+        .orElseThrow(()-> new UserNotFoundException(authToken));
   }
 }
