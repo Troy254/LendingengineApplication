@@ -28,7 +28,7 @@ public class Money {
     if(currency!= money.getCurrency()){
     throw new IllegalArgumentException();
   }
-  return new Money(amount + money.getAmount(),currency);
+    return new Money(amount + money.getAmount(),currency);
 }
 
   public Money minus(Money money) {
