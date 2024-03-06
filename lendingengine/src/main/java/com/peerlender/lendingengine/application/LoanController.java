@@ -70,13 +70,13 @@ public class LoanController {
   }
 
   //Accept A Loan
-  @PostMapping(value = "/loan/accept/{loanApplicationId}")
-  public void acceptLoan(@PathVariable String loanApplicationId,
-      HttpServletRequest request) {
+@PostMapping(value = "/loan/accept/{loanApplicationId}")
+public void acceptLoan(@PathVariable String loanApplicationId,
+    HttpServletRequest request) {
     AppUsers lender = tokenValidationService.validateTokenAndGetUser(
         request.getHeader(HttpHeaders.AUTHORIZATION));
-    loanService.acceptLoan(loanApplicationId, lender.getUsername());
-  }
+    loanService.acceptLoan(loanApplicationId,lender.getUsername());
+}
 
   @PostMapping(value = "/loan/repay")
   public void repayLoan(@RequestBody LoanRepaymentRequest request,
