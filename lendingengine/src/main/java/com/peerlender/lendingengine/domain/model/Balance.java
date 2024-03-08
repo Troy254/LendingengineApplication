@@ -43,4 +43,5 @@ public class Balance {
       moneyMap.put(money.getCurrency(), moneyMap.get(money.getCurrency()).minus(money));
     }
   }
+
 }
