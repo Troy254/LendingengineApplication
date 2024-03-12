@@ -10,8 +10,6 @@ public interface LoanRepository extends JpaRepository<Loan, Long> {
 
     List<Loan> findAllByBorrower (AppUsers borrower);
     List<Loan> findAllByLender (AppUsers lender);
-
     Optional<Loan> findOneByIdAndBorrower(Long id, AppUsers borrower);
-
 
 }
