@@ -43,4 +43,5 @@ public class Loan {
   public Money getAmountOwed(){
     return amount;
   }
+
 }
