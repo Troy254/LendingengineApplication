@@ -1,6 +1,7 @@
 package com.peerlender.lendingengine.application.model;
 
 
+import com.peerlender.lendingengine.domain.model.Money;
 import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,9 +1,11 @@
 package com.peerlender.lendingengine.domain.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,11 +23,11 @@ public class Loan {
   private AppUsers borrower;
   @ManyToOne
   private AppUsers lender;
-  private Money amount;
+
+  private int amount;
   private double interestRate;
   private LocalDate dateLent;
   private LocalDate dateDue;
-  private Money amountRepayed;
 
   public Loan() {
   }
@@ -38,10 +40,6 @@ public class Loan {
     this.interestRate = loanApplication.getInterestRate();
     this.dateLent = LocalDate.now();
     this.dateDue = LocalDate.now().plusDays(loanApplication.getRepaymentTermInDays());
-  }
-
-  public Money getAmountOwed(){
-    return amount;
   }
 
 }
