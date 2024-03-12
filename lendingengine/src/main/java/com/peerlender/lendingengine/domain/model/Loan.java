@@ -5,9 +5,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import java.time.LocalDate;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
 @Entity
 public class Loan {
 
@@ -18,15 +21,16 @@ public class Loan {
   private AppUsers borrower;
   @ManyToOne
   private AppUsers lender;
-  private int amount;
+  private Money amount;
   private double interestRate;
   private LocalDate dateLent;
   private LocalDate dateDue;
+  private Money amountRepayed;
 
   public Loan() {
   }
 
-  public Loan(AppUsers lender, LoanApplication loanApplication) {
+  public Loan(AppUsers lender,LoanApplication loanApplication) {
     this.id = id;
     this.borrower = loanApplication.getBorrower();
     this.lender = lender;
@@ -34,5 +38,9 @@ public class Loan {
     this.interestRate = loanApplication.getInterestRate();
     this.dateLent = LocalDate.now();
     this.dateDue = LocalDate.now().plusDays(loanApplication.getRepaymentTermInDays());
+  }
+
+  public Money getAmountOwed(){
+    return amount;
   }
 }
