@@ -63,11 +63,6 @@ Loan loan = loanRepository.findOneByIdAndBorrower(loanId,borrower)
         () -> new UserNotFoundException(applicationId));
   }
 
-  private LoanApplication findLoanApplication1(String applicationId) {
-    return loanApplicationRepository.findById(
-        Long.valueOf(applicationId)).orElseThrow(()-> new UserNotFoundException(applicationId));
-  }
-
   private AppUsers findAppUsers(String lenderUsername) {
     return userRepository.findById(lenderUsername).orElseThrow(
         () -> new UserNotFoundException(lenderUsername));
