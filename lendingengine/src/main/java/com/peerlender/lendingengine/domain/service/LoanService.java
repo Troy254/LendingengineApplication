@@ -1,5 +1,6 @@
 package com.peerlender.lendingengine.domain.service;
 
+import com.peerlender.lendingengine.domain.exception.LoanNotFoundException;
 import com.peerlender.lendingengine.domain.exception.UserNotFoundException;
 import com.peerlender.lendingengine.domain.model.AppUsers;
 import com.peerlender.lendingengine.domain.model.Currency;
@@ -28,6 +29,14 @@ public class LoanService {
     this.userRepository = userRepository;
     this.loanRepository = loanRepository;
   }
+@Transactional
+  public void repayLoan(Money amountToRepay,long loanId,AppUsers borrower) {
+Loan loan = loanRepository.findOneByIdAndBorrower(loanId,borrower)
+    .orElseThrow(LoanNotFoundException::new);
+
+//Money actualPaidAmount = amountToRepay.getAmount() > loan
+ }
+
   @Transactional
   public void acceptLoan(String applicationId, String lenderUsername) {
     System.out.println("passed through service");

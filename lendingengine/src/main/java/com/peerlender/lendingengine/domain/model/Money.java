@@ -24,6 +24,7 @@ public class Money {
     this.amount = amount;
   }
 
+
   public Money add(Money money) {
     if(currency!= money.getCurrency()){
     throw new IllegalArgumentException();
