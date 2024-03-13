@@ -1,21 +1,49 @@
 package com.peerlender.lendingengine.application.model;
 
+
 import com.peerlender.lendingengine.domain.model.Currency;
 import com.peerlender.lendingengine.domain.model.Money;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.Objects;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class LoanRepaymentRequest {
+public final class LoanRepaymentRequest {
 
-  private double amount;
-  private long loanId;
+  private final double amount;
+  private final long loanId;
 
 
-  public Money getAmount(){
+  public LoanRepaymentRequest(double amount, long loanId) {
+    this.amount = amount;
+    this.loanId = loanId;
+  }
+
+  public Money getAmount() {
     return new Money(amount, Currency.USD);
+  }
+
+  public long getLoanId() {
+    return loanId;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
+    LoanRepaymentRequest that = (LoanRepaymentRequest) o;
+    return Double.compare(amount, that.amount) == 0 && loanId == that.loanId;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(amount, loanId);
+  }
+
+  @Override
+  public String toString() {
+    return "LoanRepaymentRequest{" +
+        "amount=" + amount +
+        ", loanId=" + loanId +
+        '}';
   }
 }
