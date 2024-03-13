@@ -20,7 +20,7 @@ public final class LoanRepaymentRequest {
     return new Money(amount, Currency.USD);
   }
 
-  public long getLoanId() {
+    public long getLoanId() {
     return loanId;
   }
 
