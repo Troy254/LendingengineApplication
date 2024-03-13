@@ -47,7 +47,7 @@ Loan loan = loanRepository.findOneByIdAndBorrower(loanId,borrower)
     loanRepository.save(new Loan(lender, loanApplication));
   }
 
-  public List<Loan>  findAllBorrowedLoans(final AppUsers borrower) {
+  public List<Loan> findAllBorrowedLoans(final AppUsers borrower) {
     return loanRepository.findAllByBorrower(borrower);
   }
 
