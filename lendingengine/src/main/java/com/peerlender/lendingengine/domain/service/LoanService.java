@@ -29,9 +29,9 @@ public class LoanService {
     this.userRepository = userRepository;
     this.loanRepository = loanRepository;
   }
-@Transactional
+  @Transactional
   public void repayLoan(Money amountToRepay,long loanId,AppUsers borrower) {
-Loan loan = loanRepository.findOneByIdAndBorrower(loanId,borrower)
+  Loan loan = loanRepository.findOneByIdAndBorrower(loanId,borrower)
     .orElseThrow(LoanNotFoundException::new);
  }
 
