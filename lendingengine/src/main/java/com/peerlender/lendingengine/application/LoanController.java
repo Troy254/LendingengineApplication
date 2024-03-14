@@ -88,6 +88,6 @@ public void acceptLoan(@PathVariable String loanApplicationId,
   @GetMapping(value = "/loans")
   public List<Loan> getLoans(HttpServletRequest request) {
     tokenValidationService.validateTokenAndGetUser(request.getHeader(HttpHeaders.AUTHORIZATION));
-    return loanService.getLoans();
+        return loanService.getLoans();
   }
 }
