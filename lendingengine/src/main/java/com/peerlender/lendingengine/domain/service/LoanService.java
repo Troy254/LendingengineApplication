@@ -33,6 +33,7 @@ public class LoanService {
   public void repayLoan(Money amountToRepay,long loanId,AppUsers borrower) {
   Loan loan = loanRepository.findOneByIdAndBorrower(loanId,borrower)
     .orElseThrow(LoanNotFoundException::new);
+    //Money actualPaidAmount = amountToRepay.getAmount() > loan
  }
 
   @Transactional
