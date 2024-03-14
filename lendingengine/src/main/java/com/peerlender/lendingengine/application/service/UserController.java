@@ -26,7 +26,8 @@ public class UserController {
   //find all Users
   @GetMapping(value = "/users")
   public List<AppUsers> findUsers(HttpServletRequest request) {
-    tokenValidationService.validateTokenAndGetUser(request.getHeader(HttpHeaders.AUTHORIZATION));
-    return userRepository.findAll();
+  tokenValidationService.validateTokenAndGetUser(request.getHeader(HttpHeaders.AUTHORIZATION));
+  tokenValidationService.validateTokenAndGetUser(request.getHeader(HttpHeaders.AUTHORIZATION));
+  return userRepository.findAll();
   }
 }
