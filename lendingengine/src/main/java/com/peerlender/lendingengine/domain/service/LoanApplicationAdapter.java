@@ -21,7 +21,7 @@ public class LoanApplicationAdapter {
 
   public LoanApplication transform(LoanRequest req, AppUsers borrower){
     System.out.println("Service For Loan Requested");
-    Optional<AppUsers> appUsersOptional = userRepository.findById(borrower.getUsername());
+    Optional<AppUsers>  appUsersOptional = userRepository.findById(borrower.getUsername());
     if(appUsersOptional.isPresent()){
       return new LoanApplication(req.getAmount(), appUsersOptional.get(), req.getDaysToRepay(), req.getInterestRate());
     } else {
