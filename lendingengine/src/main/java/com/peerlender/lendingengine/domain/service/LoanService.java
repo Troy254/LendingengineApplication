@@ -35,8 +35,7 @@ public class LoanService {
     .orElseThrow(LoanNotFoundException::new);
     //Money actualPaidAmount = amountToRepay.getAmount() > loan
  }
-
-  @Transactional
+ @Transactional
   public void acceptLoan(String applicationId, String lenderUsername) {
     System.out.println("passed through service");
     AppUsers lender = findAppUsers(lenderUsername);
