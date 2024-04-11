@@ -58,7 +58,7 @@ public class LoanService {
   private LoanApplication findLoanApplication(String applicationId) {
     return loanApplicationRepository.findById(
         Long.valueOf(applicationId)).orElseThrow(
-        () -> new UserNotFoundException(applicationId));
+            () -> new UserNotFoundException(applicationId));
   }
 
   private AppUsers findAppUsers(String lenderUsername) {
