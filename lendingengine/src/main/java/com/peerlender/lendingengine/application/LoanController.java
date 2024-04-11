@@ -83,6 +83,7 @@ public void acceptLoan(@PathVariable String loanApplicationId,
       @RequestBody LoanRepaymentRequest request,
       @RequestHeader String authorization){
    AppUsers borrower = tokenValidationService.validateTokenAndGetUser(authorization);
+   loanService.repayLoan(request.getAmount(), request.getLoanId(), borrower);
   }
 
   //Getting All The Loans
