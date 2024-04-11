@@ -79,7 +79,8 @@ public void acceptLoan(@PathVariable String loanApplicationId,
 }
 
   @PostMapping(value = "/loan/repay")
-  public void repayLoan(@RequestBody LoanRepaymentRequest request,
+  public void repayLoan(
+      @RequestBody LoanRepaymentRequest request,
       @RequestHeader String authorization){
    AppUsers borrower = tokenValidationService.validateTokenAndGetUser(authorization);
   }

@@ -29,19 +29,26 @@ public class LoanService {
     this.userRepository = userRepository;
     this.loanRepository = loanRepository;
   }
+
   @Transactional
-  public void repayLoan(Money amountToRepay,long loanId,AppUsers borrower) {
+  public void repayLoan(
+      final Money amountToRepay,
+      final long loanId,
+      final AppUsers borrower) {
   Loan loan = loanRepository.findOneByIdAndBorrower(loanId,borrower)
     .orElseThrow(LoanNotFoundException::new);
-    //Money actualPaidAmount = amountToRepay.getAmount() > loan
+   Money actualPaidAmount = amountToRepay.getAmount() > loan.getAmountOwed().getAmount() ?
+       loan.getAmountOwed() : amountToRepay;
+   loan.repay(actualPaidAmount);
  }
- @Transactional
-  public void acceptLoan(String applicationId, String lenderUsername) {
+
+  @Transactional
+  public void acceptLoan(String applicationId,String lenderUsername){
     System.out.println("passed through service");
     AppUsers lender = findAppUsers(lenderUsername);
     LoanApplication loanApplication = findLoanApplication(applicationId);
     AppUsers borrower = loanApplication.getBorrower();
-    Money money = new Money(loanApplication.getAmount(), Currency.USD);
+    Money money = loanApplication.getAmount();
     lender.withdraw(money);
     borrower.topUp(money);
     loanRepository.save(new Loan(lender, loanApplication));

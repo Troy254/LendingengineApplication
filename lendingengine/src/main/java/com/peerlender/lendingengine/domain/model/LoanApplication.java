@@ -1,6 +1,7 @@
 package com.peerlender.lendingengine.domain.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import java.util.Objects;
@@ -10,6 +11,7 @@ import java.util.Objects;
 public class LoanApplication {
 
   @Id
+  @GeneratedValue
   private int amount;
 
   @ManyToOne
@@ -29,8 +31,8 @@ public class LoanApplication {
 
   }
 
-  public int getAmount() {
-    return amount;
+  public Money getAmount() {
+    return new Money(amount,Currency.USD);
   }
 
   public AppUsers getBorrower() {

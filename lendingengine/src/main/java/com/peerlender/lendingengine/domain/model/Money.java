@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Money {
 
+  public static final Money ZERO = new Money(0, Currency.USD);
   @Id
   @GeneratedValue
   private long id;
@@ -24,15 +25,18 @@ public class Money {
     this.amount = amount;
   }
 
+  public Money times(double multiplier){
+    return new Money(amount * multiplier, currency);
+  }
 
-  public Money add(Money money) {
+  public Money add(final Money money) {
     if(currency!= money.getCurrency()){
     throw new IllegalArgumentException();
   }
     return new Money(amount + money.getAmount(),currency);
 }
 
-public Money minus(Money money) {
+public Money minus(final Money money) {
     if (currency != money.getCurrency() || amount < money.getAmount()) {
       throw new IllegalArgumentException();
     }
