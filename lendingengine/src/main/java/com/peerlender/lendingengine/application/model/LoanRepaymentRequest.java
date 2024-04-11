@@ -17,7 +17,6 @@ public final class LoanRepaymentRequest {
   }
 
   public Money getAmount() {
-
     return new Money(amount, Currency.USD);
   }
 
